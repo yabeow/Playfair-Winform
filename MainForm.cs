@@ -33,12 +33,13 @@ namespace Playfair
 		Char[,] keyTable = new char[5, 5];
 			
 		private void onInputKeyChange(object sender, EventArgs e) {
-			// Tao bang dua vao key
 			char[] alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ".ToCharArray();
 			String key = new String(this.inputKey.Text.Distinct().ToArray());
 			Regex rgx = new Regex("[^A-Z]");
 			key = rgx.Replace(key, "");
 			this.inputKey.Text = key;
+			
+			//Tu dong dua con tro ve cuoi dong
 			this.inputKey.SelectionStart = this.inputKey.Text.Length == 0 ? 0 : this.inputKey.Text.Length;
 			this.inputKey.SelectionLength = 0;
 			
@@ -96,7 +97,7 @@ namespace Playfair
                 	result += keyTable[yA, (xA+1)%5].ToString() + keyTable[yB, (xB+1)%5].ToString();
                 }
                 else {
-                	// Tao thanh hinh chu nhat, thay the bang 2 goc.
+                	// Tao thanh hinh chu nhat, thay the bang 2 goc con lai.
                 	result += keyTable[yA, xB].ToString() + keyTable[yB, xA].ToString();
                 }
                 result += " ";
@@ -123,19 +124,19 @@ namespace Playfair
                 int yB = indexB / 5;
                 int xB = indexB - 5*yB;
                 if (xA == xB) {
-                	// Cung mot cot, thay the bang ki tu ben duoi.
+                	// Cung mot cot, thay the bang ki tu ben tren.
                 	if (yA == 0) yA = 5;
 					if (yB == 0) yB = 5;	                	
                 	result += keyTable[(yA-1)%5, xA].ToString() + keyTable[(yB-1)%5, xB].ToString();
                 }
                 else if (yA == yB) {
-                	// Cung mot hang, thay the bang ki tu ben phai.
+                	// Cung mot hang, thay the bang ki tu ben trai.
                 	if (xA == 0) xA = 5;
 					if (xB == 0) xB = 5;
                 	result += keyTable[yA, (xA-1)%5].ToString() + keyTable[yB, (xB-1)%5].ToString();
                 }
                 else {
-                	// Tao thanh hinh chu nhat, thay the bang 2 goc.
+                	// Tao thanh hinh chu nhat, thay the bang 2 goc con lai.
                 	result += keyTable[yA, xB].ToString() + keyTable[yB, xA].ToString();
                 }
 			}
