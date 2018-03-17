@@ -70,6 +70,7 @@ namespace Playfair
 			// 
 			// inputMessage
 			// 
+			this.inputMessage.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
 			this.inputMessage.Location = new System.Drawing.Point(6, 19);
 			this.inputMessage.Multiline = true;
 			this.inputMessage.Name = "inputMessage";
